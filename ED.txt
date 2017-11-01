@@ -1,0 +1,41 @@
+// This file defines empirical distribution function (EDF) from a given training-set
+// and then calculate EDF values for a given testing-set
+
+#ifndef _ED_H_
+#define _ED_H_
+
+#include <fstream>
+#include <cmath>
+#include <cstdio>
+#include <algorithm>
+#include <stdlib.h>
+#include <math.h>
+#include <vector>
+#include <numeric>
+#include <random>
+
+
+typedef std::vector<float> Vector;
+
+
+template<class T> inline float EDF(T y)
+{
+	y = float(y);
+	float n = 0;
+	float *xd = X.data();
+// 	while ( *xd++ <= y && n < train_set_size) n += 1.0;
+	while ( *xd++ <= y && n < train_set_size) {n += 1.0;};
+	return n/train_set_size;
+}
+
+template<class vec> inline vec Z(vec Y)
+{
+	vec Z;
+	int sz = Y.size();
+	float *yd = Y.data();
+ 	while (--sz >= 0) Z.push_back(EDF<float>(*yd++));
+//	while (--sz >= 0) {float Zi = EDF<float>(*yd++); printf("%f\n", Zi); Z.push_back(Zi);};
+	return Z;
+}
+
+#endif
