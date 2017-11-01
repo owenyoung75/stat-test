@@ -8,16 +8,9 @@
 //  This file produce training data set for EDF calculation
 //  training data, which is not needed anywhere else, can be read from a MC sampling, or a test sample
 
-#include <fstream>
-#include <cmath>
-#include <cstdio>
-#include <algorithm>
-#include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+#include <algorithm>
 #include <vector>
-#include <numeric>
-#include <random>
 
 #include "ED.hpp"
 

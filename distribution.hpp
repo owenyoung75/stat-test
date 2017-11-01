@@ -17,13 +17,15 @@
 
 
 #include <stdlib.h>
+#include <functional>
 
 #include <math.h>
-#include <vector>
 #include <numeric>
 #include <random>
 
 typedef std::function<float (float)> float_pointer;
+
+
 
 namespace RAND_D
 {

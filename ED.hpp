@@ -12,22 +12,16 @@
 #ifndef ED_hpp
 #define ED_hpp
 
-#include <fstream>
-#include <cmath>
-#include <cstdio>
-#include <algorithm>
-#include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+#include <algorithm>
 #include <vector>
-#include <numeric>
-#include <random>
+
 
 
 typedef std::vector<float> Vector;
 
 
-namespace ED
+namespace RAND_D
 {
       
     template<class T1, class T2> inline float EDF(T1 y, T2 X)
