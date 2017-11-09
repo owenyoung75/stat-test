@@ -54,13 +54,13 @@ namespace STAT_TEST {
     
     
     template<typename _num_type>
-    template<class _test_type>
-    inline _test_type Empirical_Distribution<_num_type>::cumulative_distr_func (_test_type _data_test)
+    template<class _test_type> inline _test_type 
+    Empirical_Distribution<_num_type>::cumulative_distr_func (_test_type _data_test)
     {
         if (typeid(_test_type) == typeid(_num_type))
         {
             double cdf = 0.0;
-            float *xd = Data_sample.data();
+            _num_type *xd = Data_sample.data();
             
             while ( *xd ++ <= _data_test  &&  cdf < Data_size) cdf += 1.0;
             return cdf/Data_size;
@@ -69,7 +69,7 @@ namespace STAT_TEST {
         {
             std::vector<double> cdf_vector;
             int _test_size = _data_test.size();
-            float *yd = _data_test.data();
+            _num_type *yd = _data_test.data();
             
             while (--_test_size >= 0)
             {
