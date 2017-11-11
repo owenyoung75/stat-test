@@ -5,6 +5,7 @@
 //  Created by YangTong on 11/7/17.
 //
 //
+#pragma once
 
 #ifndef resampling_hpp
 #define resampling_hpp

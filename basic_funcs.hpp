@@ -5,6 +5,8 @@
 //  Created by YangTong on 11/5/17.
 //
 //
+#pragma once
+
 #include <vector>
 #include <stdio.h>
 #include <boost/numeric/ublas/matrix.hpp>

@@ -6,7 +6,7 @@
 //
 //
 //  This is the file for data generation from a chosen distribution
-
+#pragma once
 
 #ifndef equal_distr_test_h
 #define equal_distr_test_h

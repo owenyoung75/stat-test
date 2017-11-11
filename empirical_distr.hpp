@@ -7,7 +7,7 @@
 //
 //  This file defines empirical distribution function (EDF) from a given training-set
 //  and then calculate EDF values for a given testing-set
-
+#pragma once
 
 #ifndef empirical_dsitr_hpp
 #define empirical_dsitr_hpp
@@ -23,7 +23,7 @@
 
 namespace STAT_TEST     
 {
-    // A general structure for an EMPIRICAL-DISTRIBUTION
+    // A general structure of an EMPIRICAL-DISTRIBUTION
     template<typename _num_type = double>
     struct Empirical_Distribution
     {

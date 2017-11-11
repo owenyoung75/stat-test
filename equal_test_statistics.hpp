@@ -5,6 +5,7 @@
 //  Created by YangTong on 11/6/17.
 //
 //
+#pragma once
 
 #ifndef equal_test_statistics_hpp
 #define equal_test_statistics_hpp
