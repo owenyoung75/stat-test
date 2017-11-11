@@ -19,7 +19,7 @@
 #include <numeric>
 #include <random>
 
-#include "equal_test_statistics.hpp"
+#include "equal_distr_statistics.hpp"
 #include "resampling.hpp"
 
 typedef std::vector<double> Vector;

@@ -15,9 +15,6 @@
 
 
 #include "basic_funcs.hpp"
-#include "empirical_distr.hpp"
-#include "resampling.hpp"
-#include "equal_test_statistics.hpp"
 #include "equal_distr_test.hpp"
 
 
