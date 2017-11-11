@@ -23,11 +23,6 @@
 
 namespace STAT_TEST     
 {
-    // example data group for test
-    std::vector<double> Data_Example_1 {1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0};
-
-    
-    
     // A general structure for an EMPIRICAL-DISTRIBUTION
     template<typename _num_type = double>
     struct Empirical_Distribution
@@ -85,7 +80,8 @@ namespace STAT_TEST
         // Default constructor of EMPIRICAL-DISTRIBUTION for TEST
         Empirical_Distribution ()
         {
-            Data_sample = Data_Example_1;
+            std::vector<double> Data_Example {1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0};
+            Data_sample = Data_Example;
             Data_size = Data_sample.size();
             sort(Data_sample.begin(), Data_sample.end());
             Min = Data_sample[0];

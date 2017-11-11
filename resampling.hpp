@@ -19,10 +19,7 @@
 
 
 namespace STAT_TEST {
-    // a data-example for program testing
-    std::vector<double> Data_Example_0 {6.0,1.0,7.0,9.0,8.0,2.0,0.4,0.9};
-
- 
+    
     
     // FISHER-YATES-SHUFFLE process for the training data
     template<typename _num_type>
@@ -86,7 +83,7 @@ namespace STAT_TEST {
     {
         int _resample_interval = 1;
         
-        return resampling(_data_total, _subsample_size, _resample_interval);
+        return resampling<_num_type>(_data_total, _subsample_size, _resample_interval);
     }
     
     // RESAMPLING process with
@@ -97,19 +94,19 @@ namespace STAT_TEST {
     resampling(std::vector<_num_type> _data_total)
     {
         int _subsample_size = _data_total.size()/2;
-        return resampling(_data_total, _subsample_size);
+        return resampling<_num_type>(_data_total, _subsample_size);
     }
     
     // TEST RESAMPLING process with
     // testing data example
     // default resampling_interval = 1
     // default pick-out sample size = half of total size
-    template<typename _num_type>
+    template<typename _num_type = double>
     inline std::tuple< std::vector<_num_type>, std::vector<_num_type> >
     resampling()
     {
-        std::vector<_num_type> _data_total = Data_Example_0;
-        return resampling(_data_total);
+        std::vector<double> _data_total {6.0,1.0,7.0,9.0,8.0,2.0,0.4,0.9};
+        return resampling<double>(_data_total);
     }
     
     
