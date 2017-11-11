@@ -9,5 +9,5 @@ This package would be updated gradually accompanying my research concerns in eco
 
 
 # namespaces:
-### STAT_TEST              :: most general name-space right now;
+### STAT_TEST              :: parent namespace with basic structs, funcs, classes, etc.
 ### STAT_TEST::EQUAL_TEST  :: namespace explicitly for equal-distribution-testing problems
