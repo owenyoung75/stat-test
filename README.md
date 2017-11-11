@@ -9,5 +9,5 @@ This package would be updated gradually accompanying my research concerns in eco
 
 
 # namespaces:
-### STAT_TEST   :: most general name-space right now;
-### EQUAL_TEST  :: namespace explicitly for equal-distribution-testing problems
+### STAT_TEST              :: most general name-space right now;
+### STAT_TEST::EQUAL_TEST  :: namespace explicitly for equal-distribution-testing problems
