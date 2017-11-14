@@ -29,7 +29,6 @@ int main()
     std::mt19937 gen(rd());
     std::normal_distribution<> Normal_D(0,0.3);
     Vector _total_sample;
-    
     for (int n = 0; n < 1000; n++)
         _total_sample.push_back(Normal_D(gen));
     

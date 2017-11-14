@@ -28,15 +28,15 @@ namespace STAT_TEST {
     namespace EQUAL_TEST{
         using namespace boost::numeric::ublas;
 
-        // construct TESTING PI-VECTORS for a GIVEN SAMPLE
+        // construct TESTING PI-VECTORS of a GIVEN SAMPLE
         template<typename _num_type>
         inline matrix<double>
         PI_package (std::vector<_num_type> _total_sample,
-                    int _size_of_subsample,
-                    int _num_of_resampling,
-                    int _highest_order_poly,
-                    int _resampling_interval,
-                    int _wamup_steps)
+                                          int _size_of_subsample,
+                                          int _num_of_resampling,
+                                          int _highest_order_poly,
+                                          int _resampling_interval,
+                                          int _wamup_steps)
         {
             matrix<double> PI_package(_highest_order_poly, _num_of_resampling);
             std::tuple<Vector, Vector> resampled;
@@ -66,7 +66,7 @@ namespace STAT_TEST {
             return PI_package;
         }
         
-        // construct TESTING PI-VECTORS for a sample example
+        // construct TESTING PI-VECTORS of a sample example
         template<typename _num_type = double>
         inline matrix<double> PI_package ()
         {

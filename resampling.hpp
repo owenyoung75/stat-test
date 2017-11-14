@@ -31,6 +31,7 @@ namespace STAT_TEST {
         {
             std::random_device rd;
             std::mt19937 mt(rd());
+
             int currentIndexCounter = _data_total.size();
             _num_type *iter = _data_total.data();
         
@@ -46,13 +47,30 @@ namespace STAT_TEST {
         return _data_total;
     }
     
+    // alternatively, one could use basic shuffling process defined in std namespace
+    template<typename _num_type>
+    inline std::vector<_num_type>
+    standard_shuffle(std::vector<_num_type> _data_total, int _shuffle_times)
+    {
+        for (auto _times = 0; _times < _shuffle_times; _times++)
+        {
+            std::random_device rd;
+            std::mt19937 mt(rd());
+            std::shuffle(_data_total.begin(), _data_total.end(), mt);
+        }
+        return _data_total;
+    }
+    
+    
+    
     
     
     
     // RESAMPLING process for a given group of data
+    // --return   -> {part1, part2}     ::  one shuffled data divided into two groups: usually smaller ones are samples
     // --parameter-> _data_total        ::  training data
     // --parameter-> _subsample_size    ::  size of the pick-out sample
-    // --parameter-> _resample_interval ::  number of shuffling for each resampling
+    // --parameter-> _resample_interval ::  number of shuffling in each resampling before pick out samples
     template<typename _num_type>
     inline std::tuple< std::vector<_num_type>, std::vector<_num_type> >
     resampling(std::vector<_num_type> _data_total,
@@ -64,6 +82,7 @@ namespace STAT_TEST {
             _subsample_size = _data_total.size() - _subsample_size;
         
         // shuffle once
+//        _data_total = standard_shuffle(_data_total, _resample_interval);
         _data_total = Fisher_Yates_shuffle(_data_total, _resample_interval);
         
         std::size_t const smaller_size = _subsample_size;
