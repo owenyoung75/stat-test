@@ -29,14 +29,16 @@ namespace STAT_TEST {
         inline double Normalized_Legendre_Poly (int _order,
                                                 double _unit_variable)
         {
-            double Pi = boost::math::legendre_p<double>(_order, _unit_variable);
+            double Pi = boost::math::legendre_p<double>(_order,
+                                                        (2*_unit_variable-1)
+                                                        );
             Pi *= sqrt(2*_order + 1);
             return Pi;
         }
         
         // NORMALIZED-LEGENDRE-POLYNOMIAL for a vector
         inline Vector Normalized_Legendre_Poly (int _order,
-                                                             Vector _unit_variable_vector)
+                                                Vector _unit_variable_vector)
         {
             Vector Pi;
             int _unit_variable_size = _unit_variable_vector.size();

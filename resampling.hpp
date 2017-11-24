@@ -53,11 +53,7 @@ namespace STAT_TEST {
     standard_shuffle(std::vector<_num_type> _data_total, int _shuffle_times)
     {
         for (auto _times = 0; _times < _shuffle_times; _times++)
-        {
-            std::random_device rd;
-            std::mt19937 mt(rd());
-            std::shuffle(_data_total.begin(), _data_total.end(), mt);
-        }
+            std::random_shuffle(_data_total.begin(), _data_total.end());
         return _data_total;
     }
     
@@ -82,8 +78,8 @@ namespace STAT_TEST {
             _subsample_size = _data_total.size() - _subsample_size;
         
         // shuffle once
-//        _data_total = standard_shuffle(_data_total, _resample_interval);
-        _data_total = Fisher_Yates_shuffle(_data_total, _resample_interval);
+//        _data_total = Fisher_Yates_shuffle(_data_total, _resample_interval);
+        _data_total = standard_shuffle<double>(_data_total, _resample_interval);
         
         std::size_t const smaller_size = _subsample_size;
 
