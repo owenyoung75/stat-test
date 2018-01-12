@@ -111,44 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named equal_test
+# Target rules for targets named critical_vector_comparison
 
 # Build rule for target.
-equal_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 equal_test
-.PHONY : equal_test
+critical_vector_comparison: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 critical_vector_comparison
+.PHONY : critical_vector_comparison
 
 # fast build rule for target.
-equal_test/fast:
-	$(MAKE) -f CMakeFiles/equal_test.dir/build.make CMakeFiles/equal_test.dir/build
-.PHONY : equal_test/fast
+critical_vector_comparison/fast:
+	$(MAKE) -f CMakeFiles/critical_vector_comparison.dir/build.make CMakeFiles/critical_vector_comparison.dir/build
+.PHONY : critical_vector_comparison/fast
 
-main.o: main.cpp.o
+critical_vector_comparison.o: critical_vector_comparison.cpp.o
 
-.PHONY : main.o
+.PHONY : critical_vector_comparison.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/equal_test.dir/build.make CMakeFiles/equal_test.dir/main.cpp.o
-.PHONY : main.cpp.o
+critical_vector_comparison.cpp.o:
+	$(MAKE) -f CMakeFiles/critical_vector_comparison.dir/build.make CMakeFiles/critical_vector_comparison.dir/critical_vector_comparison.cpp.o
+.PHONY : critical_vector_comparison.cpp.o
 
-main.i: main.cpp.i
+critical_vector_comparison.i: critical_vector_comparison.cpp.i
 
-.PHONY : main.i
+.PHONY : critical_vector_comparison.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/equal_test.dir/build.make CMakeFiles/equal_test.dir/main.cpp.i
-.PHONY : main.cpp.i
+critical_vector_comparison.cpp.i:
+	$(MAKE) -f CMakeFiles/critical_vector_comparison.dir/build.make CMakeFiles/critical_vector_comparison.dir/critical_vector_comparison.cpp.i
+.PHONY : critical_vector_comparison.cpp.i
 
-main.s: main.cpp.s
+critical_vector_comparison.s: critical_vector_comparison.cpp.s
 
-.PHONY : main.s
+.PHONY : critical_vector_comparison.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/equal_test.dir/build.make CMakeFiles/equal_test.dir/main.cpp.s
-.PHONY : main.cpp.s
+critical_vector_comparison.cpp.s:
+	$(MAKE) -f CMakeFiles/critical_vector_comparison.dir/build.make CMakeFiles/critical_vector_comparison.dir/critical_vector_comparison.cpp.s
+.PHONY : critical_vector_comparison.cpp.s
 
 # Help Target
 help:
@@ -158,10 +158,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... equal_test"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... critical_vector_comparison"
+	@echo "... critical_vector_comparison.o"
+	@echo "... critical_vector_comparison.i"
+	@echo "... critical_vector_comparison.s"
 .PHONY : help
 
 

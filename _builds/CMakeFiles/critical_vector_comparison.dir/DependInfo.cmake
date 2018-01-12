@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/yangtong/Documents/work_econ/stat_test/main.cpp" "/Users/yangtong/Documents/work_econ/stat_test/_builds/CMakeFiles/equal_test.dir/main.cpp.o"
+  "/Users/yangtong/Documents/work_econ/stat_test/critical_vector_comparison.cpp" "/Users/yangtong/Documents/work_econ/stat_test/_builds/CMakeFiles/critical_vector_comparison.dir/critical_vector_comparison.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.9)
 
 set(CMAKE_CXX_STANDARD 11)
+#set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1z -Wall")
 
 project(try)
 
@@ -12,6 +13,6 @@ set(SOURCE_FILES
 	resampling.hpp
 	equal_distr_statistics.hpp
 	equal_distr_test.hpp
-	main.cpp)
+	critical_vector_comparison.cpp)
 
-add_executable(equal_test ${SOURCE_FILES})
+add_executable(critical_vector_comparison ${SOURCE_FILES})
