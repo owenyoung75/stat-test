@@ -39,7 +39,7 @@ namespace STAT_TEST {
     constexpr double Nv2    = 0.990;
     constexpr double Nv3    = 0.975;
     constexpr double Nv4    = 0.950;
-    constexpr double Nv5    = 0.9;
+    constexpr double Nv5    = 0.900;
     
     
     
@@ -77,7 +77,7 @@ namespace STAT_TEST {
     
     // obtain the coarse-grained histgram
     template<typename _num_type>
-    inline std::map<int, int> coars_grained_distr (std::vector<_num_type> _data);
+    inline std::map<int, int> coarse_grained_distr (std::vector<_num_type> _data);
     
     
     

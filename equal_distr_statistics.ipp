@@ -14,12 +14,9 @@ namespace STAT_TEST {
     namespace EQUAL_TEST {
         
         // NORMALIZED-LEGENDRE-POLYNOMIAL for a number
-        inline double Normalized_Legendre_Poly (int _order,
-                                                double _unit_variable)
+        inline double Normalized_Legendre_Poly (int _order, double _unit_variable)
         {
-            double Pi = boost::math::legendre_p<double>(_order,
-                                                        (2*_unit_variable-1)
-                                                        );
+            double Pi = boost::math::legendre_p<double>(_order, (2*_unit_variable-1) );
             Pi *= sqrt(2*_order + 1);
             return Pi;
         }
@@ -33,9 +30,7 @@ namespace STAT_TEST {
             double *unit_variable_p = _unit_variable_vector.data();
             
             while (--_unit_variable_size >= 0)
-            {
                 Pi.push_back( Normalized_Legendre_Poly(_order, *unit_variable_p++) );
-            }
             
             return Pi;
         }

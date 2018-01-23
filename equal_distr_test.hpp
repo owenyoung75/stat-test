@@ -52,16 +52,16 @@ namespace STAT_TEST {
         
         // Calculate critical VECTORs of each psi component and psi^2 for a training sample
         template<typename _num_type> inline std::tuple< matrix<double>, matrix<double> >
-        Pi_and_Psi_ciritical_values(std::vector<_num_type> _training_sample,
-                                    int    _subsample_size,
-                                    int    _num_of_resampling,
-                                    int    _highest_order_poly,
-                                    int    _resampling_interval,
-                                    int    _wamup_steps,
-                                    Vector _critical_portions,
-                                    bool   _plot_psi_square_distr,
-                                    std::string _file_name
-                                    );
+        Pi_and_Psi_ciritical_vectors(std::vector<_num_type> _training_sample,
+                                     int    _subsample_size,
+                                     int    _num_of_resampling,
+                                     int    _highest_order_poly,
+                                     int    _resampling_interval,
+                                     int    _wamup_steps,
+                                     Vector _critical_portions,
+                                     bool   _plot_psi_square_distr,
+                                     std::string _file_name
+                                     );
 
         
         // Calculate critical VALUEs of each psi component and psi^2 for a training sample

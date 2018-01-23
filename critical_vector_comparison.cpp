@@ -39,26 +39,27 @@
 
 using namespace STAT_TEST::EQUAL_TEST;
 using namespace boost::numeric::ublas;
-
 typedef std::vector<double> Vector;
+
 
 int main()
 {
-    std::cout << "////////////////////////////////////////////////////////////////////////////////" << std::endl;
-    std::cout << "////////////////////////////////////////////////////////////////////////////////" << std::endl;
+    std::cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << std::endl;
+    std::cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << std::endl;
     std::cout << "    Computation started ......" << '\n'<< '\n'<< '\n'<< '\n';
 
+    
     
     ////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////        Construct random machines       /////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////
-    std::random_device rd{};
-    std::mt19937_64 gen0{rd()};
+    std::random_device seed{};
+    std::mt19937_64 gen0{seed()};
     
 
     std::normal_distribution<> training_D{0.0,1.0};
-//    std::normal_distribution<> testing_D {0.0,1.0};
-    std::student_t_distribution<>     testing_D{5};
+    std::normal_distribution<> testing_D {0.0,1.0};
+//    std::student_t_distribution<>     testing_D{5};
 //    std::chi_squared_distribution<>   testing_D{5};
     
     
@@ -69,7 +70,6 @@ int main()
     
     int     training_sample_size = 5000;
     int     testing_sample_size  = 0.1 * training_sample_size;
-    int     subsample_size = int(testing_sample_size * training_sample_size / (testing_sample_size + training_sample_size));
     int     testing_times = 5000;
     
     int     num_of_resampling = 10000;
@@ -78,6 +78,7 @@ int main()
     int     wamup_steps = 10;
     Vector  critical_portions = {STAT_TEST::Nv2, STAT_TEST::Nv4, STAT_TEST::Nv5};
     bool    plot_or_not = true;
+
     
     
     std::cout << "    training sample size     = " << training_sample_size << '\n';
@@ -114,7 +115,7 @@ int main()
     std::cout << "    Current time: " << c_time << '\n';
     
     std::string training_file = c_time + "_trained_" + std::to_string(int(testing_sample_size*10/training_sample_size)) + ":10" + ".txt";
-    std::string tesing_file   = c_time + "_chisqr3_"  + std::to_string(int(testing_sample_size*10/training_sample_size)) + ":10" + ".txt";
+    std::string tesing_file   = c_time + "_student5_"  + std::to_string(int(testing_sample_size*10/training_sample_size)) + ":10" + ".txt";
     
     
     
@@ -124,8 +125,10 @@ int main()
     Vector training_sample;
     for (int n = 0; n < training_sample_size; n++)
         training_sample.push_back(training_D(gen0));
+
+    int subsample_size = int(testing_sample_size * training_sample_size / (testing_sample_size + training_sample_size));
     
-    std::tuple< matrix<double>, matrix<double> >  pair = Pi_and_Psi_ciritical_values<double> (training_sample,
+    std::tuple< matrix<double>, matrix<double> >  pair = Pi_and_Psi_ciritical_vectors<double> (training_sample,
                                                                                               subsample_size,
                                                                                               num_of_resampling,
                                                                                               highest_order_poly,
@@ -145,6 +148,9 @@ int main()
     time( &rawtime1 );
     double t = difftime(rawtime1, rawtime0);
     std::cout<< "    Training part took " << t << " seconds." << '\n' << '\n';
+    
+    
+    
     
     
     ////////////////////////////////////////////////////////////////////////////////////////
@@ -215,11 +221,16 @@ int main()
 
     
     
+    
+    ////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////
     std::cout << '\n'<< "    Computation completed." << '\n';
-    std::cout << "////////////////////////////////////////////////////////////////////////////////" << std::endl;
-    std::cout << "////////////////////////////////////////////////////////////////////////////////" << std::endl;
+    std::cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << std::endl;
+    std::cout << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" << std::endl;
     return 0;
 }
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////

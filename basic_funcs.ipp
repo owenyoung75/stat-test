@@ -92,7 +92,7 @@ namespace STAT_TEST
     
     // obtain the coarse-grained histgram
     template<typename _num_type>
-    inline std::map<int, int> coars_grained_distr (std::vector<_num_type> _data)
+    inline std::map<int, int> coarse_grained_distr (std::vector<_num_type> _data)
     {
         std::map<int, int> hist{};
         for(int n=0; n<_data.size(); ++n)
@@ -108,7 +108,7 @@ namespace STAT_TEST
     template<typename _num_type>
     inline void Plot_distribution (std::vector<_num_type> _data)
     {
-        std::map<int, int> hist = coars_grained_distr<_num_type>(_data);
+        std::map<int, int> hist = coarse_grained_distr<_num_type>(_data);
         
         std::cout << '\n' << '\n' << '\n' << '\n';
         for(auto p : hist)
