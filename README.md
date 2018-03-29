@@ -11,3 +11,4 @@ This package would be updated gradually accompanying my research concerns in eco
 ## namespaces:
 ### STAT_TEST              : parent namespace with basic structs, funcs, classes, etc.
 ### STAT_TEST::EQUAL_TEST  : namespace specifically for equal-distribution-testing problems
+### LOCAL_EST              : namespace specifically for local-polynomial estimators
