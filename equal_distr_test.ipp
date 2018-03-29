@@ -10,8 +10,7 @@
 
 typedef std::vector<double> Vector;
 
-namespace STAT_TEST {
-    namespace EQUAL_TEST{
+namespace EQUAL_TEST{
         using namespace boost::numeric::ublas;
 
         
@@ -225,8 +224,5 @@ namespace STAT_TEST {
                                                );
         }
 
-        
-        
-    }
 }
 

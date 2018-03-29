@@ -14,30 +14,11 @@
 ////////////////////////                                         ////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
-#include <iostream>
-#include <stdlib.h>
-#include <fstream>
-#include <vector>
-#include <time.h>
-#include <math.h>
-#include <random>
-#include <string>
-#include <iomanip>
-#include <map>
-#include <cmath>
-#include <chrono>
-#include <thread>
-#include <unistd.h>
-
-#include <boost/numeric/ublas/matrix.hpp>
-#include <boost/numeric/ublas/matrix_proxy.hpp>
-#include <boost/numeric/ublas/io.hpp>
-#include <boost/range/algorithm.hpp>
 
 #include "basic_funcs.hpp"
 #include "equal_distr_test.hpp"
 
-using namespace STAT_TEST::EQUAL_TEST;
+using namespace EQUAL_TEST;
 using namespace boost::numeric::ublas;
 typedef std::vector<double> Vector;
 
@@ -71,6 +52,7 @@ int main()
     int     training_sample_size = 5000;
     int     testing_sample_size  = 0.1 * training_sample_size;
     int     testing_times = 5000;
+    int     subsample_size = int(testing_sample_size * training_sample_size / (testing_sample_size + training_sample_size));
     
     int     num_of_resampling = 10000;
     int     highest_order_poly = 4;
@@ -126,7 +108,6 @@ int main()
     for (int n = 0; n < training_sample_size; n++)
         training_sample.push_back(training_D(gen0));
 
-    int subsample_size = int(testing_sample_size * training_sample_size / (testing_sample_size + training_sample_size));
     
     std::tuple< matrix<double>, matrix<double> >  pair = Pi_and_Psi_ciritical_vectors<double> (training_sample,
                                                                                               subsample_size,

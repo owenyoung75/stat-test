@@ -32,10 +32,7 @@ namespace STAT_TEST {
     inline std::vector<_num_type>
     standard_shuffle(std::vector<_num_type> _data_total, int _shuffle_times);
     
-    
-    
-    
-    
+
     
     // RESAMPLING process for a given group of data
     // --return   -> {part1, part2}     ::  one shuffled data divided into two groups: usually smaller ones are samples

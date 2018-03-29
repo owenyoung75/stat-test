@@ -14,32 +14,12 @@
 ////////////////////////                                         ////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
-#include <iostream>
-#include <stdlib.h>
-#include <fstream>
-#include <vector>
-#include <time.h>
-#include <math.h>
-#include <random>
-#include <string>
-#include <iomanip>
-#include <map>
-#include <cmath>
-#include <chrono>
-#include <thread>
-#include <unistd.h>
-
-#include <boost/numeric/ublas/matrix.hpp>
-#include <boost/numeric/ublas/matrix_proxy.hpp>
-#include <boost/numeric/ublas/io.hpp>
-#include <boost/range/algorithm.hpp>
 
 #include "basic_funcs.hpp"
 #include "equal_distr_test.hpp"
 
-using namespace STAT_TEST::EQUAL_TEST;
-typedef std::vector<double> Vector;
-#define UTC (+19)
+using namespace EQUAL_TEST;
+#define UTC (-5)
 
 int main()
 {
@@ -124,7 +104,7 @@ int main()
         
     for (int n = 0; n < training_sample_size; n++)
         training_sample.push_back(training_D(gen0));
-    std::map<int, int> hist1 = STAT_TEST::coars_grained_distr<double>(training_sample);
+    std::map<int, int> hist1 = STAT_TEST::coarse_grained_distr<double>(training_sample);
     
 
     std::tuple< Vector, Vector >  pair = Pi_and_Psi_ciritical_values<double> (training_sample,
@@ -165,7 +145,7 @@ int main()
             testing_sample.push_back(testing_D(gen0));
         
         // roughly estimate the distribution difference
-        std::map<int, int> hist2 = STAT_TEST::coars_grained_distr<double>(testing_sample);
+        std::map<int, int> hist2 = STAT_TEST::coarse_grained_distr<double>(testing_sample);
         for (auto p : hist1)
         {
             if (hist2.find(p.first) != hist2.end())

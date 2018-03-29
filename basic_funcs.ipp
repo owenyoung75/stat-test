@@ -9,8 +9,6 @@
 
 namespace STAT_TEST
 {
-    using namespace boost::numeric::ublas;
-    
     // calculate MEAN of a std::vector
     template<typename _num_type>
     inline double Mean_value(std::vector<_num_type> _data)
@@ -57,14 +55,15 @@ namespace STAT_TEST
     
     // calculate COVARIANCE of a rectagular boost::matrix
     // _data_groups = (row_idx, col_idx)
-    // row_idx :: variable 1, 2, 3 ......
-    // col_idx :: copy     1, 2, 3 ...... --> have closer address
+    // return:: matrix(row_idx, row_idx)
+    // row_idx :: # of variables  1, 2, 3 ......
+    // col_idx :: # of copies     1, 2, 3 ...... --> have closer address
     template<typename _num_type>
-    inline matrix<double> Covariance_Matrix (matrix<_num_type> _data_groups)
+    inline Matrix Covariance_Matrix (matrix<_num_type> _data_groups)
     {
         int num_of_varbs = _data_groups.size1();
-        vector<double> means(num_of_varbs);
-        matrix<double> Matx(num_of_varbs, num_of_varbs);
+        Vector means(num_of_varbs);
+        Matrix Matx(num_of_varbs, num_of_varbs);
         
         for (int i = 0; i<num_of_varbs; i++)
         {
@@ -88,6 +87,45 @@ namespace STAT_TEST
         return Matx;
     }
     
+    
+    
+    // Calculate inverse matrix by LU decomp
+    template<class T> bool InvertMatrix (const matrix<T>& input,
+                                         matrix<T>& inverse
+                                         )
+    {
+        typedef permutation_matrix<std::size_t> pmatrix;
+        matrix<T> A(input);
+        pmatrix pm(A.size1());
+        
+        int res = lu_factorize(A,pm);
+        if( res != 0 ) return false;
+        
+        inverse.assign(identity_matrix<T>(A.size1()));
+        lu_substitute(A, pm, inverse);
+        return true;
+    }
+    
+    
+    // PDF function of Normal distribution
+    inline double NormalPDF (double x, double mu, double var){
+        return exp(- (x-mu) * (x-mu) /2.0)/( sqrt(2 * STAT_TEST::PI) * var );
+    }
+    inline double NormalPDF (double x){
+        return exp(- x * x /2.0)/sqrt(2 * STAT_TEST::PI);
+    }
+    inline Vector NormalPDF (Vector X, double mu, double var){
+        Vector Y(X.size());
+        for (int i = 0; i < X.size(); i++)
+            Y(i) = exp(- (X(i)-mu) * (X(i)-mu) /2.0)/( sqrt(2 * STAT_TEST::PI) * var );
+        return Y;
+    }
+    inline Vector NormalPDF (Vector X){
+        Vector Y(X.size());
+        for (int i = 0; i < X.size(); i++)
+            Y(i) = exp(- X(i)* X(i) /2.0)/sqrt(2 * STAT_TEST::PI);
+        return Y;
+    }
     
     
     // obtain the coarse-grained histgram

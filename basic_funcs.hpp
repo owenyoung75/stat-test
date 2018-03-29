@@ -7,18 +7,36 @@
 //
 #pragma once
 
-#include <vector>
-#include <stdio.h>
 #include <iostream>
-#include <iomanip>
+#include <stdlib.h>
+#include <fstream>
+#include <vector>
+#include <time.h>
+#include <math.h>
+#include <random>
 #include <string>
+#include <iomanip>
 #include <map>
 #include <cmath>
+#include <chrono>
+#include <thread>
+#include <unistd.h>
 
-#include <boost/numeric/ublas/matrix.hpp>
-#include <boost/numeric/ublas/matrix_proxy.hpp>
-#include <boost/numeric/ublas/io.hpp>
+
+#include <boost/array.hpp>
+#include <boost/range/algorithm.hpp>
 #include <boost/math/constants/constants.hpp>
+
+#include <boost/numeric/ublas/vector.hpp>
+#include <boost/numeric/ublas/matrix.hpp>
+#include <boost/numeric/ublas/vector_proxy.hpp>
+#include <boost/numeric/ublas/matrix_proxy.hpp>
+#include <boost/numeric/ublas/triangular.hpp>
+#include <boost/numeric/ublas/banded.hpp>
+#include <boost/numeric/ublas/lu.hpp>
+#include <boost/numeric/ublas/io.hpp>
+#include <boost/numeric/odeint/util/ublas_wrapper.hpp>
+
 
 #ifndef basic_funcs_hpp
 #define basic_funcs_hpp
@@ -26,6 +44,8 @@
 
 namespace STAT_TEST {
     using namespace boost::numeric::ublas;
+    typedef vector<double>  Vector;
+    typedef matrix<double>  Matrix;
     
     //////////////////////////////////////////////////////////////////////////
     ///////////////////   Statistical Constants setting  /////////////////////
@@ -68,11 +88,24 @@ namespace STAT_TEST {
 
     // calculate COVARIANCE of a rectagular boost::matrix
     // _data_groups = (row_idx, col_idx)
-    // row_idx :: variable 1, 2, 3 ......
-    // col_idx :: copy     1, 2, 3 ...... --> have closer address
+    // return:: matrix(row_idx, row_idx)
+    // row_idx :: # of variables  1, 2, 3 ......
+    // col_idx :: # of copies     1, 2, 3 ...... --> have closer address
     template<typename _num_type>
-    inline matrix<double> Covariance_Matrix (matrix<_num_type> _data_groups);
+    inline Matrix Covariance_Matrix (matrix<_num_type> _data_groups);
    
+    
+    // Calculate inverse matrix by LU decomp
+    template<class T> bool InvertMatrix (const matrix<T>& input, matrix<T>& inverse);
+    
+    
+    
+    // PDF function of Normal distribution
+    inline double NormalPDF (double x, double mu, double var);
+    inline Vector NormalPDF (Vector X, double mu, double var);
+    inline double NormalPDF (double x);
+    inline Vector NormalPDF (Vector X);
+    
     
     
     // obtain the coarse-grained histgram
