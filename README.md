@@ -1,4 +1,4 @@
-# STAT_TEST
+# STAT-TEST
 
 This is a light package for general STATISTIC TEST problems.
 It should be applicable to pure statistic problems, time-series analysis, and other related econometric researches.
